@@ -13,8 +13,12 @@
   </head>
 
   <body>
-    <div class="container">
-      <%= yield %>
+    <div class="flex-wrapper d-flex flex-column justify-content-between">
+      <%= render  "/shared/navbar" %>
+      <div class="container flex-grow-1">
+        <%= yield %>
+      </div>
+      <%= render  "/shared/footer" %>
     </div>
   </body>
 </html>
