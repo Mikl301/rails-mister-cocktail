@@ -1,20 +1,22 @@
-<h1 class="my-3 text-center border-bottom pb-3">cocktails list</h1>
+<div id="content" class="container">
+  <h1 class="text-center border-bottom py-3">cocktails list</h1>
 
-<div class="cards mt-5">
-  <div class="row">
-    <% @cocktails.each do |cocktail| %>
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card-category mb-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://source.unsplash.com/400x200/?<%= cocktail.name %>')">
-          <%= link_to cocktail.name, cocktail_path(cocktail) %>
-        </div>
-      </div>
-    <% end %>
-    <div class="col-12 col-md-6 col-lg-4">
-      <%= link_to  new_cocktail_path, action: 'go' do %>
-        <div class="card-category mb-4 d-flex justify-content-center align-items-center">
-          <%= icon('fas', 'plus-circle',) %>
+  <div class="cards mt-5">
+    <div class="row">
+      <% @cocktails.each do |cocktail| %>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card-category mb-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://source.unsplash.com/400x200/?<%= cocktail.name %>')">
+            <%= link_to cocktail.name, cocktail_path(cocktail) %>
+          </div>
         </div>
       <% end %>
+      <div class="col-12 col-md-6 col-lg-4">
+        <%= link_to  new_cocktail_path, action: 'go' do %>
+          <div class="card-category mb-4 d-flex justify-content-center align-items-center">
+            <%= icon('fas', 'plus-circle',) %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

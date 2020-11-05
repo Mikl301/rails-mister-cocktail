@@ -1,5 +1,7 @@
 // Import page-specific CSS files here.
 @import "home";
+@import "cocktails";
+
 
 a:hover {
   text-decoration: none;
@@ -8,3 +10,9 @@ a:hover {
 .flex-wrapper {
   min-height: 100vh;
 }
+
+h1 {
+  font-family: $title-font;
+  color: rgb(184, 52, 0);
+}
+
