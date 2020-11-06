@@ -1,10 +1,7 @@
 <%= simple_form_for [@cocktail, @dose] do |f| %>
-  <%= f.association :ingredient, input_html: { class: 'select2' } %>
+  <%= f.association :ingredient, input_html: { class: 'select2 form-control' } %>
   <%= f.input :description, label: 'Quantity' %>
-  <div class="d-flex justify-content-between">
-    <%= link_to icon('fas', 'chevron-left', "Back to cocktails list"), cocktails_path, class: "btn btn-secondary"  %>
-    <%= button_tag :submit, class: "btn btn-primary" do %>
-      <%= icon('fas', 'check', "Add ingredient") %>
-    <% end %>
-  </div>
+  <%= button_tag :submit, class: "btn btn-primary w-100" do %>
+    <%= icon('fas', 'check', "Add ingredient") %>
+  <% end %>
 <% end %>

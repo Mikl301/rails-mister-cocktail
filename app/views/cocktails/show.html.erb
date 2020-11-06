@@ -9,20 +9,55 @@
   <div class="col-12 col-md-6 col-xl-8">
     <div class="container">
       <div class="p-5">
-        <h1><%= @cocktail.name %></h1>
+        <h1 class="mb-3"><%= @cocktail.name %></h1>
+        <div class="row">
+          <div class="col-12 col-xl-6">
 
-        <ul class="list-group mb-3">
-          <% @cocktail.doses.each do |dose| %>
-            <li class="list-group-item">
-              <%= dose.description %> of <%= dose.ingredient.name.downcase %>
-              <%= link_to icon('far', 'times-circle'),
-                          dose_path(dose),
-                          method: :delete,
-                          data: { confirm: "Are you sure?" }  %>
-            </li>
-          <% end %>
-        </ul>
-        <%= render  "/shared/form" %>
+            <ul class="list-group mb-3">
+              <% if @cocktail.doses.count > 0 %>
+                <h3>Ingredients:</h3>
+              <% end %>
+              <% @cocktail.doses.each do |dose| %>
+                <li class="list-group-item">
+                  <%= dose.description %> of <%= dose.ingredient.name.downcase %>
+                  <%= link_to icon('far', 'times-circle'),
+                              dose_path(dose),
+                              method: :delete,
+                              data: { confirm: "Are you sure?" }  %>
+                </li>
+              <% end %>
+            </ul>
+            <h3>Add an ingredient</h3>
+            <%= render  "/shared/form" %>
+          </div>
+          <div class="col-12 col-xl-6">
+            <ul class="list-group mb-3">
+              <% if @cocktail.reviews.count > 0 %>
+                <h3>Reviews:</h3>
+              <% end %>
+              <% @cocktail.reviews.each do |review| %>
+              <li class="list-group-item">
+                <p>
+                  <%= review.content %>
+                </p>
+                <p>
+                  <% review.rating.times do %>
+                    <%= icon('fas', 'star') %>
+                  <% end %>
+                  <% (5 - review.rating).times do %>
+                    <%= icon('far', 'star') %>
+                  <% end %>
+                </p>
+
+              </li>
+              <% end %>
+            </ul>
+            <h3>Add a review</h3>
+            <%= render  "/shared/review_form" %>
+          </div>
+
+          <%= link_to icon('fas', 'chevron-left', "Back to cocktails list"), cocktails_path, class: "btn btn-secondary w-100 mt-5"  %>
+        </div>
       </div>
     </div>
   </div>
