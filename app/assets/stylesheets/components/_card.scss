@@ -11,17 +11,29 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   a {
     color: white;
+    opacity: 0.9;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     font-family: $card-font;
     font-size: 1.4em;
-  }
-
-  a:hover {
-    color:#ddd;
+    transition: all 0.3s;
   }
 
   i {
     font-size: 60px;
     color: #555;
+    transition: all 0.3s;
+  }
+  transition: all 0.3s;
+}
+
+.card-category:hover {
+  transform: scale(1.05);
+
+  a {
+    opacity: 1;
+  }
+
+  i {
+    color: #222;
   }
 }
