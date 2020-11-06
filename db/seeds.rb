@@ -8,8 +8,8 @@
 require 'open-uri'
 require 'json'
 
-url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
-response = URI.open(url)
+ingredient_url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
+response = URI.open(ingredient_url)
 json_response = JSON.parse(response.read)
 ingredients = json_response['drinks']
 
@@ -18,3 +18,27 @@ ingredients.each do |ingredient|
   Ingredient.create(name: ingredient['strIngredient1'])
 end
 puts 'Ingredients created'
+
+cocktails = [
+  'mojito',
+  'bloody mary',
+  'whisky sour',
+  'gin tonic',
+  'pina colada',
+  'caipirinha',
+  'amaretto sour',
+  'long island ice tea'
+]
+
+puts 'Creating cocktails...'
+# mojito_image = URI.open('https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2501&q=80')
+# mojito = Cocktail.new(name: 'Mojito')
+# mojito.photo.attach(io: mojito_image, filename: 'mojito.jpeg', content_type: 'image/jpeg')
+# mojito.save
+cocktails.each do |cocktail|
+  image = URI.open("https://source.unsplash.com/600x1200/?#{cocktail}>")
+  new_cocktail = Cocktail.new(name: cocktail.capitalize)
+  new_cocktail.photo.attach(io: image, filename: "#{cocktail}.jpeg", content_type: 'image/jpeg')
+  new_cocktail.save
+end
+puts 'Cocktails created'
