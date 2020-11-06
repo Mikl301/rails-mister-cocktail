@@ -1,6 +1,10 @@
 class CocktailsController < ApplicationController
   def index
-    @cocktails = Cocktail.all
+    if params[:query]
+      @cocktails = Cocktail.where("name LIKE '%#{params[:query].capitalize}%'")
+    else
+      @cocktails = Cocktail.all
+    end
   end
 
   def show

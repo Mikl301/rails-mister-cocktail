@@ -42,10 +42,10 @@
                 </p>
                 <p>
                   <% review.rating.times do %>
-                    <%= icon('fas', 'star') %>
+                    <%= icon('fas', 'star', class: 'full-star') %>
                   <% end %>
                   <% (5 - review.rating).times do %>
-                    <%= icon('far', 'star') %>
+                    <%= icon('far', 'star', class: 'empty-star') %>
                   <% end %>
                 </p>
 
