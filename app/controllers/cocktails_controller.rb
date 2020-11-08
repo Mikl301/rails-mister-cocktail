@@ -1,14 +1,11 @@
 class CocktailsController < ApplicationController
+  before_action :set_cocktail, only: %i[show edit update destroy]
+
   def index
-    if params[:query]
-      @cocktails = Cocktail.where("name LIKE '%#{params[:query].capitalize}%'")
-    else
-      @cocktails = Cocktail.all
-    end
+    @cocktails = params[:query] ? Cocktail.where("name LIKE '%#{params[:query].downcase}%'") : Cocktail.all
   end
 
   def show
-    @cocktail = Cocktail.find(params[:id])
     @dose = Dose.new
     @review = Review.new
   end
@@ -26,7 +23,23 @@ class CocktailsController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    @cocktail.update(cocktail_params)
+    redirect_to cocktail_path(@cocktail)
+  end
+
+  def destroy
+    @cocktail.destroy
+    redirect_to cocktails_path
+  end
+
   private
+
+  def set_cocktail
+    @cocktail = Cocktail.find(params[:id])
+  end
 
   def cocktail_params
     params.require(:cocktail).permit(:name, :photo)

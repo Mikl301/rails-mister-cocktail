@@ -3,15 +3,6 @@
   <div class="col-12 col-md-6 col-xl-8 px-5">
     <h1 class="py-3">Add a cocktail</h1>
 
-    <%= simple_form_for @cocktail do |f| %>
-      <%= f.input :name %>
-      <%= f.input :photo, as: :file %>
-      <div class="d-flex justify-content-between">
-        <%= link_to icon('fas', 'chevron-left', "Back to cocktails list"), cocktails_path, class: "btn btn-secondary"  %>
-        <%= button_tag :submit, class: "btn btn-primary" do %>
-          <%= icon('fas', 'check', "Submit cocktail") %>
-        <% end %>      
-      </div>
-    <% end %>
+    <%= render  "form" %>
   </div>
 </div>

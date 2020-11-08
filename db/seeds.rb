@@ -27,7 +27,7 @@ cocktails = [
   'pina colada',
   'caipirinha',
   'amaretto sour',
-  'long island ice tea'
+  'long island iced tea'
 ]
 
 puts 'Creating cocktails...'
